@@ -20,7 +20,23 @@ For **security**, the API implements access control by following these business 
 
 You can follow [Node.js and TypeScript Tutorial: Secure an Express API](https://auth0.com/blog/node-js-and-typescript-tutorial-secure-an-express-api/) to implement authorization in your API. You'll require users to log in to perform write operations on the API. Additionally, you'll further increase your API's security by requiring users to have a set of permissions (defined through a role) to perform any write operation.
 
+You can clone this repo and run it locally or you can deploy it to a live server using Glitch.
+
 ## Get Started
+
+### Glitch
+
+Open this Glitch project:
+
+[https://glitch.com/edit/#!/api--express--typescript--menu](https://glitch.com/edit/#!/api--express--typescript--menu?path=README.md%3A1%3A0)
+
+Click on the "Remix to Edit" button in the top-right corner.
+
+Click on the `.env` file from your Glitch project. You'll need to add the values for `AUTH0_AUDIENCE` and `AUTH0_DOMAIN` from your Auth0 API configuration.
+
+You'll get those values in the next section, "Set Up an Authorization Service".
+
+### Local Repo
 
 Clone the project in a directory called `menu-api` and checkout its `build-api` branch:
 
@@ -38,6 +54,14 @@ Then, install the project dependencies:
 
 ```bash
 npm i
+```
+
+Open `.env` and add the following keys to it:
+
+```bash
+PORT=7000
+AUTH0_AUDIENCE=
+AUTH0_DOMAIN=
 ```
 
 ## Set Up an Authorization Service
@@ -68,14 +92,6 @@ With these values in place, hit the **Create** button.
 
 Your API needs some configuration variables to identity itself with Auth0: an _Audience_ and a _Domain_ value. The best place to store these values is within the `.env` file of your project.
 
-Open `.env` and add the following keys to it:
-
-```bash
-PORT=7000
-AUTH0_AUDIENCE=
-AUTH0_DOMAIN=
-```
-
 Head back to your Auth0 API page, and **follow these steps to get the Auth0 Audience**:
 
 ![Get the Auth0 Audience to configure an API](https://cdn.auth0.com/blog/complete-guide-to-user-authentication/get-the-auth0-audience.png)
@@ -104,12 +120,38 @@ Now, **follow these steps to get the Auth0 Domain value**:
 > 
 > - The `region` subdomain (`au`, `us`, or `eu`) is optional. Some Auth0 Domains don't have it.
 
+## Run and Test the API Server
+
+### Glitch
+
+Glitch autosaves any changes that you make. As soon as you change the values of `.env` or any other file in your Glitch project, Glitch rebuilds and redeploys the project for you.
+
+To test your API server hosted in Glitch, you need its "Live Site" URL. 
+
+In your Glitch project, click on the "Share" button, which you can find under the project name in the top-left corner.
+
+Look for the **Project links** section and copy the "Live Site" link:
+
+```bash
+https://<random-long-string>.glitch.me
+```
+
+This is the root URL of your live API server that you can use to make requests.
+
+### Local Repo
+
 **Restart the server so that Express can recognize the changes you just made to `.env`**. Stop the running process and execute `npm run dev` once again.
 
 Finally, run the project by executing the following command:
 
 ```bash
 npm run dev
+```
+
+The root URL of your local server is:
+
+```bash
+http://localhost:7070
 ```
 
 ## Test the API with the Demo Client (Auth0 Eats Dashboard)
