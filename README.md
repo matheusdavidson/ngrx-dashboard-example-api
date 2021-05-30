@@ -59,7 +59,7 @@ npm i
 Open `.env` and add the following keys to it:
 
 ```bash
-PORT=7000
+PORT=7070
 AUTH0_AUDIENCE=
 AUTH0_DOMAIN=
 ```
